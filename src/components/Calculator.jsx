@@ -111,52 +111,10 @@ const Calculator = () => {
     // Função para exportar os dados e o gráfico como PDF
     
     
-    const handleExportPDF = () => {
-        const doc = new jsPDF();
-      
-        
-      
-        // Adicionar detalhes da regressão na segunda página
-        if (results) {
-          
-          doc.setFontSize(12);
-          doc.text(`Equação da Reta: y = ${results.beta1}x ${results.beta0 >= 0 ? '+' : ''} ${results.beta0}`, 20, 20);
-          doc.text(`Coeficiente de Correlação (r): ${results.r}`, 20, 30);
-          doc.text(`Coeficiente de Determinação (R²): ${results.rSquared}`, 20, 40);
-          doc.text(`Média de X: ${results.steps.meanX}`, 20, 50);
-          doc.text(`Média de Y: ${results.steps.meanY}`, 20, 60);
-        }
-      
-        // Adicionar os pontos inseridos pelo usuário em uma terceira página
-        doc.addPage();
-        doc.setFontSize(12);
-        doc.text('Pontos Inseridos:', 20, 20);
-        points.forEach((point, index) => {
-          doc.text(`Ponto ${index + 1}: (${point.x}, ${point.y})`, 20, 30 + (index * 10));
-        });
-      
-        // Adicionar os pontos estimados da regressão em uma quarta página
-        doc.addPage();
-        doc.text('Pontos Estimados pela Regressão:', 20, 20);
-        const estimatedPoints = points.map(point => ({
-          x: point.x,
-          y: parseFloat((results.beta1 * point.x + results.beta0)) // Arredondar o valor de Y
-        }));
-        estimatedPoints.forEach((point, index) => {
-          doc.text(`Ponto Estimado ${index + 1}: (${point.x}, ${point.y})`, 20, 30 + (index * 10));
-        });
-      
-        // Adicionar o gráfico de dispersão e a linha de regressão em uma quinta página
-        doc.addPage();
-       
-        html2canvas(graphRef.current).then(canvas => {
-          const imgData = canvas.toDataURL('image/png');
-          doc.addImage(imgData, 'PNG', 20, 30, 170, 100);
-      
-          // Salvar PDF
-          doc.save('relatorio_regressao_linear.pdf');
-        });
-      };
+   const handleExportPDF = () => {
+    window.print();
+};
+
     return (
         <div className="max-w-7xl mx-auto px-4 py-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
