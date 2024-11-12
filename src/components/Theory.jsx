@@ -1,142 +1,152 @@
 import React from 'react';
-import { BookOpen, PieChart, BarChart, DollarSign, CreditCard } from 'lucide-react';
+import { BookOpen, PieChart, BarChart, DollarSign, Target, Lightbulb } from 'lucide-react';
 
 const LinearRegressionTheory = () => {
   return (
-    <div className="p-6 space-y-8">
+    <div className="p-6 max-w-4xl mx-auto space-y-8">
       <div>
-        <h1 className="text-3xl font-bold">Teoria Abrangente da Regressão Linear</h1>
-        <BookOpen className="inline-block h-12 w-12 mr-2 text-gray-500" />
-        <p className="text-lg">
-          A regressão linear é uma técnica estatística amplamente utilizada para modelar a relação entre uma variável dependente (variável resposta) e uma ou mais variáveis independentes (variáveis preditoras). O objetivo principal da regressão linear é encontrar a equação que melhor descreve essa relação, permitindo fazer previsões e entender o impacto das variáveis independentes na variável dependente. Essa técnica é essencial em diversas áreas, como economia, finanças, ciências sociais e engenharia, pois permite quantificar e analisar a dependência entre fenômenos.
+        <h1 className="text-3xl font-bold mb-4 flex items-center gap-2">
+          <BookOpen className="h-8 w-8 text-blue-600" />
+          Entendendo a Regressão Linear
+        </h1>
+        <p className="text-lg leading-relaxed text-gray-700">
+          A regressão linear é uma das ferramentas estatísticas mais poderosas e amplamente utilizadas para compreender 
+          a relação entre variáveis e fazer previsões. Imagine que você quer entender como diferentes fatores influenciam 
+          um resultado específico - é exatamente para isso que a regressão linear serve.
         </p>
       </div>
 
-      <div>
-        <h2 className="text-2xl font-bold">Modelo de Regressão Linear Simples</h2>
-        <PieChart className="inline-block h-10 w-10 mr-2 text-gray-500" />
-        <p>
-          O modelo de regressão linear simples é usado quando temos apenas uma variável independente que se relaciona linearmente com a variável dependente. A equação do modelo é dada por:
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+          <Target className="h-6 w-6 text-green-600" />
+          Conceitos Fundamentais
+        </h2>
+        <p className="mb-4">
+          Em sua forma mais simples, a regressão linear busca encontrar uma linha reta que melhor se ajusta aos seus dados.
+          Esta linha pode ser descrita pela equação:
         </p>
-        <div className="bg-gray-100 p-4 rounded-md">
-          <p className="font-mono">Y = β₀ + β₁X + ε</p>
+        <div className="bg-gray-50 p-4 rounded-md mb-4 font-mono text-center">
+          Y = a + bX
         </div>
-        <p>
-          Onde:
-          <ul className="list-disc pl-6">
-            <li>Y é a variável dependente (variável resposta)</li>
-            <li>X é a variável independente (variável preditora)</li>
-            <li>β₀ é o intercepto (valor de Y quando X = 0)</li>
-            <li>β₁ é o coeficiente angular (inclinação da reta)</li>
-            <li>ε é o termo de erro (diferença entre o valor observado e o valor previsto)</li>
-          </ul>
-        </p>
-        <p>
-          O modelo de regressão linear simples assume que a relação entre X e Y é linear, ou seja, um aumento unitário em X resulta em um aumento ou diminuição constante em Y. Essa suposição deve ser verificada antes de aplicar o modelo.
-        </p>
+        <p>Onde:</p>
+        <ul className="list-disc pl-6 space-y-2 mb-4">
+          <li>Y é o que queremos prever (variável dependente)</li>
+          <li>X é o que usamos para fazer a previsão (variável independente)</li>
+          <li>a é onde a linha cruza o eixo Y (intercepto)</li>
+          <li>b é a inclinação da linha (coeficiente angular)</li>
+        </ul>
       </div>
 
-      <div>
-        <h2 className="text-2xl font-bold">Estimação dos Coeficientes</h2>
-        <BarChart className="inline-block h-10 w-10 mr-2 text-gray-500" />
-        <p>
-          Para estimar os coeficientes β₀ e β₁, utilizamos o método dos mínimos quadrados, que consiste em minimizar a soma dos quadrados dos resíduos (diferença entre os valores observados e os valores previstos). As fórmulas para calcular os coeficientes são:
-        </p>
-        <div className="bg-gray-100 p-4 rounded-md">
-          <p className="font-mono">
-            β₁ = Σ(X_i - Ẋ)(Y_i - Ȳ) / Σ(X_i - Ẋ)²<br />
-            β₀ = Ȳ - β₁Ẋ
-          </p>
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+          <Lightbulb className="h-6 w-6 text-yellow-600" />
+          Exemplos Práticos
+        </h2>
+        
+        <div className="space-y-6">
+          <div>
+            <h3 className="text-xl font-semibold mb-2">1. Mercado Imobiliário</h3>
+            <p className="mb-2">Previsão de preços de imóveis:</p>
+            <ul className="list-disc pl-6 space-y-1">
+              <li>Variável dependente (Y): Preço do imóvel</li>
+              <li>Variáveis independentes (X): Área, número de quartos, localização</li>
+              <li>Aplicação: Avaliar o valor justo de um imóvel</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold mb-2">2. Vendas e Marketing</h3>
+            <p className="mb-2">Análise de campanhas publicitárias:</p>
+            <ul className="list-disc pl-6 space-y-1">
+              <li>Variável dependente (Y): Volume de vendas</li>
+              <li>Variáveis independentes (X): Investimento em marketing, tempo de campanha</li>
+              <li>Aplicação: Otimizar orçamento de marketing</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold mb-2">3. Recursos Humanos</h3>
+            <p className="mb-2">Análise de desempenho:</p>
+            <ul className="list-disc pl-6 space-y-1">
+              <li>Variável dependente (Y): Produtividade do funcionário</li>
+              <li>Variáveis independentes (X): Horas de treinamento, anos de experiência</li>
+              <li>Aplicação: Planejar programas de desenvolvimento</li>
+            </ul>
+          </div>
         </div>
-        <p>
-          Onde:
-          <ul className="list-disc pl-6">
-            <li>Ẋ é a média da variável independente X</li>
-            <li>Ȳ é a média da variável dependente Y</li>
-            <li>Σ representa o somatório</li>
+      </div>
+
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+          <BarChart className="h-6 w-6 text-purple-600" />
+          Interpretando os Resultados
+        </h2>
+        <div className="space-y-4">
+          <div>
+            <h3 className="text-xl font-semibold">Coeficiente de Determinação (R²)</h3>
+            <p>
+              Varia de 0 a 1, onde:
+            </p>
+            <ul className="list-disc pl-6">
+              <li>R² próximo a 1: Modelo explica bem os dados</li>
+              <li>R² próximo a 0: Modelo não explica bem os dados</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold">Coeficiente Angular (b)</h3>
+            <ul className="list-disc pl-6">
+              <li>Positivo: Y aumenta quando X aumenta</li>
+              <li>Negativo: Y diminui quando X aumenta</li>
+              <li>Magnitude: Indica o quanto Y muda para cada unidade de X</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+          <DollarSign className="h-6 w-6 text-red-600" />
+          Aplicações no Mercado Financeiro
+        </h2>
+        <div className="space-y-4">
+          <p>A regressão linear é amplamente utilizada em análises financeiras:</p>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>
+              <strong>Análise de Ações:</strong> Comparar o desempenho de uma ação com índices de mercado
+            </li>
+            <li>
+              <strong>Gestão de Risco:</strong> Avaliar a sensibilidade de um ativo a fatores de mercado
+            </li>
+            <li>
+              <strong>Precificação de Ativos:</strong> Determinar o preço justo de instrumentos financeiros
+            </li>
           </ul>
-        </p>
-        <p>
-          O método dos mínimos quadrados garante que os coeficientes estimados sejam os melhores estimadores lineares não enviesados (BLUE - Best Linear Unbiased Estimator), ou seja, são os melhores estimadores possíveis com as informações disponíveis.
-        </p>
+        </div>
       </div>
 
-      <div>
-        <h2 className="text-2xl font-bold">Interpretação dos Resultados</h2>
-        <DollarSign className="inline-block h-10 w-10 mr-2 text-gray-500" />
-        <p>
-          Após a estimação dos coeficientes, podemos interpretar os resultados da regressão linear:
-        </p>
-        <ul className="list-disc pl-6">
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+          <PieChart className="h-6 w-6 text-indigo-600" />
+          Dicas Práticas
+        </h2>
+        <ul className="list-disc pl-6 space-y-3">
           <li>
-            <strong>Intercepto (β₀):</strong> Representa o valor médio de Y quando X é igual a zero. Esse valor indica o valor médio de Y quando nenhuma das variáveis independentes está presente no modelo.
+            <strong>Visualize seus dados:</strong> Sempre faça um gráfico de dispersão antes de aplicar a regressão
           </li>
           <li>
-            <strong>Coeficiente angular (β₁):</strong> Representa a variação média em Y para cada unidade de variação em X. Esse coeficiente indica a magnitude e a direção (positiva ou negativa) do efeito da variável independente X sobre a variável dependente Y.
+            <strong>Verifique outliers:</strong> Pontos muito distantes podem distorcer os resultados
           </li>
           <li>
-            <strong>Coeficiente de determinação (R²):</strong> Mede a proporção da variância de Y que é explicada pelas variáveis independentes no modelo. Varia de 0 a 1, sendo que valores mais próximos de 1 indicam um melhor ajuste do modelo, ou seja, uma maior capacidade de as variáveis independentes explicarem a variação da variável dependente.
-          </li>
-        </ul>
-        <p>
-          Essas informações são importantes para entender a relação entre as variáveis e fazer previsões com o modelo de regressão linear. Elas permitem quantificar o impacto das variáveis independentes na variável dependente e avaliar a qualidade do ajuste do modelo aos dados observados.
-        </p>
-      </div>
-
-      <div>
-        <h2 className="text-2xl font-bold">Suposições do Modelo</h2>
-        <CreditCard className="inline-block h-10 w-10 mr-2 text-gray-500" />
-        <p>
-          Para que o modelo de regressão linear simples seja válido, algumas suposições devem ser atendidas:
-        </p>
-        <ul className="list-disc pl-6">
-          <li>
-            <strong>Linearidade:</strong> A relação entre a variável dependente Y e a variável independente X deve ser linear.
+            <strong>Valide pressupostos:</strong> Verifique se a relação é realmente linear
           </li>
           <li>
-            <strong>Homocedasticidade:</strong> A variância dos resíduos deve ser constante (independente dos valores de X).
+            <strong>Use dados suficientes:</strong> Quanto mais dados, mais confiável será sua análise
           </li>
           <li>
-            <strong>Normalidade:</strong> Os resíduos devem seguir uma distribuição normal.
-          </li>
-          <li>
-            <strong>Independência:</strong> Os resíduos devem ser independentes entre si.
-          </li>
-          <li>
-            <strong>Ausência de multicolinearidade:</strong> Quando há mais de uma variável independente, elas não devem ser altamente correlacionadas entre si.
+            <strong>Interprete com contexto:</strong> Os resultados devem fazer sentido no mundo real
           </li>
         </ul>
-        <p>
-          É importante verificar essas suposições antes de confiar nos resultados da regressão linear. Caso alguma dessas suposições não seja atendida, os resultados podem ser enviesados ou as inferências estatísticas podem não ser válidas.
-        </p>
-      </div>
-
-      <div>
-        <h2 className="text-2xl font-bold">Extensões e Aplicações</h2>
-        <BarChart className="inline-block h-10 w-10 mr-2 text-gray-500" />
-        <p>
-          O modelo de regressão linear simples aqui apresentado é a base para extensões e aplicações mais complexas da regressão linear, como:
-        </p>
-        <ul className="list-disc pl-6">
-          <li>
-            <strong>Regressão linear múltipla:</strong> Quando há mais de uma variável independente influenciando a variável dependente.
-          </li>
-          <li>
-            <strong>Regressão polinomial:</strong> Quando a relação entre X e Y não é linear, mas pode ser modelada por um polinômio.
-          </li>
-          <li>
-            <strong>Regressão logística:</strong> Utilizada quando a variável dependente é binária (0 ou 1, sim ou não).
-          </li>
-          <li>
-            <strong>Análise de séries temporais:</strong> Aplicação da regressão linear para analisar a evolução de uma variável ao longo do tempo.
-          </li>
-          <li>
-            <strong>Modelagem de equações estruturais:</strong> Técnica que combina regressão linear com análise fatorial para avaliar relações complexas entre variáveis.
-          </li>
-        </ul>
-        <p>
-          Essas extensões permitem modelar uma ampla gama de fenômenos e são amplamente utilizadas em diversas áreas do conhecimento.
-        </p>
       </div>
     </div>
   );
