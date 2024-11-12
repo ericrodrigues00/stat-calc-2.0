@@ -54,6 +54,39 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+
+@media print {
+    /* Oculta elementos que não devem ser impressos */
+    button {
+        display: none !important;
+    }
+    
+    /* Garante que o fundo branco e as cores sejam impressas */
+    body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background: white !important;
+    }
+
+    /* Ajusta o layout para impressão */
+    .grid {
+        display: block !important;
+    }
+
+    /* Força a quebra de página onde necessário */
+    .page-break {
+        page-break-before: always;
+    }
+
+    /* Garante que os gráficos sejam impressos corretamente */
+    .recharts-wrapper {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
