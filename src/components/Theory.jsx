@@ -302,4 +302,4 @@ const LinearRegressionTheory = () => {
   );
 };
 
-export default LinearRegr
+export default LinearRegressionTheory
