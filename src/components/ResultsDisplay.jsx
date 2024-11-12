@@ -69,14 +69,7 @@ const ResultsDisplay = ({ results, showDetails, setShowDetails, onExportPDF }) =
                     </p>
                 </div>
 
-                {/* Interpretação */}
-                <div className="bg-white p-4 rounded-lg shadow">
-                    <h3 className="text-sm font-medium text-gray-500 mb-1">Interpretação</h3>
-                    <p className="text-sm text-gray-600">
-                        Para cada aumento de 1 unidade em X, Y {results.beta1 >= 0 ? 'aumenta' : 'diminui'} em
-                        {' '}{Math.abs(results.beta1).toFixed(2)} unidades.
-                    </p>
-                </div>
+               
             </div>
 
             {/* Botão para mostrar/esconder detalhes */}
