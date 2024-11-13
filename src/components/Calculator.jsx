@@ -193,6 +193,7 @@ const Calculator = () => {
                             
                             <ResultsDisplay
                                 results={results}
+                                points={points}
                                 showDetails={showDetails}
                                 setShowDetails={setShowDetails}
                             />
