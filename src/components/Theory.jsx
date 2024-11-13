@@ -1,152 +1,213 @@
-import React from 'react';
-import { BookOpen, PieChart, BarChart, DollarSign, Target, Lightbulb } from 'lucide-react';
+import React, { useState } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { ChevronDown, ChevronRight } from 'lucide-react';
 
 const LinearRegressionTheory = () => {
+  const [openSections, setOpenSections] = useState({
+    intro: true,
+    applications: false,
+    calculation: false,
+    example: false
+  });
+
+  // Dados de exemplo para o gráfico de vendas
+  const salesData = [
+    { month: 1, investment: 1000, sales: 1200 },
+    { month: 2, investment: 2000, sales: 2300 },
+    { month: 3, investment: 3000, sales: 3400 },
+    { month: 4, investment: 4000, sales: 4600 },
+    { month: 5, investment: 5000, sales: 5500 }
+  ];
+
+  // Dados de exemplo para o exercício prático
+  const heightWeightData = [
+    { height: 160, weight: 50 },
+    { height: 165, weight: 55 },
+    { height: 170, weight: 63 },
+    { height: 175, weight: 68 },
+    { height: 180, weight: 72 }
+  ];
+
+  const toggleSection = (section) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
+
   return (
-    <div className="p-6 max-w-4xl mx-auto space-y-8">
-      <div>
-        <h1 className="text-3xl font-bold mb-4 flex items-center gap-2">
-          <BookOpen className="h-8 w-8 text-blue-600" />
-          Entendendo a Regressão Linear
-        </h1>
-        <p className="text-lg leading-relaxed text-gray-700">
-          A regressão linear é uma das ferramentas estatísticas mais poderosas e amplamente utilizadas para compreender 
-          a relação entre variáveis e fazer previsões. Imagine que você quer entender como diferentes fatores influenciam 
-          um resultado específico - é exatamente para isso que a regressão linear serve.
-        </p>
-      </div>
+    <div className="max-w-4xl mx-auto p-6 space-y-8">
+      <h1 className="text-3xl font-bold text-gray-800 mb-6">
+        Entendendo Regressão Linear
+      </h1>
 
+      {/* Seção 1: Introdução */}
       <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-          <Target className="h-6 w-6 text-green-600" />
-          Conceitos Fundamentais
-        </h2>
-        <p className="mb-4">
-          Em sua forma mais simples, a regressão linear busca encontrar uma linha reta que melhor se ajusta aos seus dados.
-          Esta linha pode ser descrita pela equação:
-        </p>
-        <div className="bg-gray-50 p-4 rounded-md mb-4 font-mono text-center">
-          Y = a + bX
-        </div>
-        <p>Onde:</p>
-        <ul className="list-disc pl-6 space-y-2 mb-4">
-          <li>Y é o que queremos prever (variável dependente)</li>
-          <li>X é o que usamos para fazer a previsão (variável independente)</li>
-          <li>a é onde a linha cruza o eixo Y (intercepto)</li>
-          <li>b é a inclinação da linha (coeficiente angular)</li>
-        </ul>
-      </div>
+        <button
+          onClick={() => toggleSection('intro')}
+          className="flex items-center justify-between w-full text-xl font-semibold mb-4"
+        >
+          <span>O que é Regressão Linear?</span>
+          {openSections.intro ? <ChevronDown size={24} /> : <ChevronRight size={24} />}
+        </button>
 
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-          <Lightbulb className="h-6 w-6 text-yellow-600" />
-          Exemplos Práticos
-        </h2>
-        
-        <div className="space-y-6">
-          <div>
-            <h3 className="text-xl font-semibold mb-2">1. Mercado Imobiliário</h3>
-            <p className="mb-2">Previsão de preços de imóveis:</p>
-            <ul className="list-disc pl-6 space-y-1">
-              <li>Variável dependente (Y): Preço do imóvel</li>
-              <li>Variáveis independentes (X): Área, número de quartos, localização</li>
-              <li>Aplicação: Avaliar o valor justo de um imóvel</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold mb-2">2. Vendas e Marketing</h3>
-            <p className="mb-2">Análise de campanhas publicitárias:</p>
-            <ul className="list-disc pl-6 space-y-1">
-              <li>Variável dependente (Y): Volume de vendas</li>
-              <li>Variáveis independentes (X): Investimento em marketing, tempo de campanha</li>
-              <li>Aplicação: Otimizar orçamento de marketing</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold mb-2">3. Recursos Humanos</h3>
-            <p className="mb-2">Análise de desempenho:</p>
-            <ul className="list-disc pl-6 space-y-1">
-              <li>Variável dependente (Y): Produtividade do funcionário</li>
-              <li>Variáveis independentes (X): Horas de treinamento, anos de experiência</li>
-              <li>Aplicação: Planejar programas de desenvolvimento</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-          <BarChart className="h-6 w-6 text-purple-600" />
-          Interpretando os Resultados
-        </h2>
-        <div className="space-y-4">
-          <div>
-            <h3 className="text-xl font-semibold">Coeficiente de Determinação (R²)</h3>
+        {openSections.intro && (
+          <div className="space-y-4">
             <p>
-              Varia de 0 a 1, onde:
+              A regressão linear é uma técnica estatística que busca estabelecer uma relação 
+              matemática entre duas variáveis: uma variável independente (X) e uma variável 
+              dependente (Y).
             </p>
-            <ul className="list-disc pl-6">
-              <li>R² próximo a 1: Modelo explica bem os dados</li>
-              <li>R² próximo a 0: Modelo não explica bem os dados</li>
-            </ul>
+            <div className="bg-blue-50 p-4 rounded-lg">
+              <h3 className="font-semibold mb-2">Conceitos Fundamentais:</h3>
+              <ul className="list-disc list-inside space-y-2">
+                <li>Variável Independente (X): A variável que usamos para fazer previsões</li>
+                <li>Variável Dependente (Y): A variável que queremos prever</li>
+                <li>Linha de Regressão: Y = a + bX (onde 'a' é o intercepto e 'b' é a inclinação)</li>
+                <li>R²: Mede a qualidade do ajuste da linha aos dados (varia de 0 a 1)</li>
+              </ul>
+            </div>
           </div>
-
-          <div>
-            <h3 className="text-xl font-semibold">Coeficiente Angular (b)</h3>
-            <ul className="list-disc pl-6">
-              <li>Positivo: Y aumenta quando X aumenta</li>
-              <li>Negativo: Y diminui quando X aumenta</li>
-              <li>Magnitude: Indica o quanto Y muda para cada unidade de X</li>
-            </ul>
-          </div>
-        </div>
+        )}
       </div>
 
+      {/* Seção 2: Aplicações Práticas */}
       <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-          <DollarSign className="h-6 w-6 text-red-600" />
-          Aplicações no Mercado Financeiro
-        </h2>
-        <div className="space-y-4">
-          <p>A regressão linear é amplamente utilizada em análises financeiras:</p>
-          <ul className="list-disc pl-6 space-y-2">
-            <li>
-              <strong>Análise de Ações:</strong> Comparar o desempenho de uma ação com índices de mercado
-            </li>
-            <li>
-              <strong>Gestão de Risco:</strong> Avaliar a sensibilidade de um ativo a fatores de mercado
-            </li>
-            <li>
-              <strong>Precificação de Ativos:</strong> Determinar o preço justo de instrumentos financeiros
-            </li>
-          </ul>
-        </div>
+        <button
+          onClick={() => toggleSection('applications')}
+          className="flex items-center justify-between w-full text-xl font-semibold mb-4"
+        >
+          <span>Aplicações no Mundo Real</span>
+          {openSections.applications ? <ChevronDown size={24} /> : <ChevronRight size={24} />}
+        </button>
+
+        {openSections.applications && (
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <h3 className="font-semibold">1. Marketing e Vendas</h3>
+              <p>Relação entre investimento em publicidade e volume de vendas:</p>
+              <div className="h-64">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={salesData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="month" label={{ value: 'Investimento (R$ mil)', position: 'bottom' }} />
+                    <YAxis label={{ value: 'Vendas (R$ mil)', angle: -90, position: 'left' }} />
+                    <Tooltip />
+                    <Line type="monotone" dataKey="sales" stroke="#2563eb" name="Vendas" />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold">Outras Aplicações Comuns:</h3>
+              <ul className="list-disc list-inside space-y-2">
+                <li>Previsão de preços imobiliários baseado na área</li>
+                <li>Estimativa de consumo de energia baseado na temperatura</li>
+                <li>Previsão de desempenho escolar baseado em horas de estudo</li>
+                <li>Análise da relação entre altura e peso em estudos médicos</li>
+              </ul>
+            </div>
+          </div>
+        )}
       </div>
 
+      {/* Seção 3: Cálculos e Fórmulas */}
       <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-          <PieChart className="h-6 w-6 text-indigo-600" />
-          Dicas Práticas
-        </h2>
-        <ul className="list-disc pl-6 space-y-3">
-          <li>
-            <strong>Visualize seus dados:</strong> Sempre faça um gráfico de dispersão antes de aplicar a regressão
-          </li>
-          <li>
-            <strong>Verifique outliers:</strong> Pontos muito distantes podem distorcer os resultados
-          </li>
-          <li>
-            <strong>Valide pressupostos:</strong> Verifique se a relação é realmente linear
-          </li>
-          <li>
-            <strong>Use dados suficientes:</strong> Quanto mais dados, mais confiável será sua análise
-          </li>
-          <li>
-            <strong>Interprete com contexto:</strong> Os resultados devem fazer sentido no mundo real
-          </li>
-        </ul>
+        <button
+          onClick={() => toggleSection('calculation')}
+          className="flex items-center justify-between w-full text-xl font-semibold mb-4"
+        >
+          <span>Como Calcular?</span>
+          {openSections.calculation ? <ChevronDown size={24} /> : <ChevronRight size={24} />}
+        </button>
+
+        {openSections.calculation && (
+          <div className="space-y-6">
+            <div className="bg-gray-50 p-4 rounded-lg space-y-4">
+              <h3 className="font-semibold">Passo a Passo do Cálculo:</h3>
+              <ol className="list-decimal list-inside space-y-4">
+                <li>
+                  <span className="font-semibold">Calcular as médias:</span>
+                  <div className="mt-2 pl-6">
+                    <p>X̄ = Σx ÷ n</p>
+                    <p>Ȳ = Σy ÷ n</p>
+                  </div>
+                </li>
+                <li>
+                  <span className="font-semibold">Calcular o coeficiente angular (b):</span>
+                  <div className="mt-2 pl-6">
+                    <p>b = Σ((x - X̄)(y - Ȳ)) ÷ Σ((x - X̄)²)</p>
+                  </div>
+                </li>
+                <li>
+                  <span className="font-semibold">Calcular o intercepto (a):</span>
+                  <div className="mt-2 pl-6">
+                    <p>a = Ȳ - bX̄</p>
+                  </div>
+                </li>
+                <li>
+                  <span className="font-semibold">Calcular o R²:</span>
+                  <div className="mt-2 pl-6">
+                    <p>R² = (Σ((x - X̄)(y - Ȳ)))² ÷ (Σ((x - X̄)²)Σ((y - Ȳ)²))</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Seção 4: Exemplo Prático */}
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <button
+          onClick={() => toggleSection('example')}
+          className="flex items-center justify-between w-full text-xl font-semibold mb-4"
+        >
+          <span>Exemplo Prático: Altura vs Peso</span>
+          {openSections.example ? <ChevronDown size={24} /> : <ChevronRight size={24} />}
+        </button>
+
+        {openSections.example && (
+          <div className="space-y-6">
+            <table className="min-w-full">
+              <thead>
+                <tr className="bg-gray-50">
+                  <th className="p-2 border">Altura (cm)</th>
+                  <th className="p-2 border">Peso (kg)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {heightWeightData.map((data, index) => (
+                  <tr key={index}>
+                    <td className="p-2 border text-center">{data.height}</td>
+                    <td className="p-2 border text-center">{data.weight}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+            <div className="space-y-4">
+              <h3 className="font-semibold">Resolução:</h3>
+              <ol className="list-decimal list-inside space-y-2">
+                <li>Médias: X̄ = 170 cm, Ȳ = 61.6 kg</li>
+                <li>Coeficiente angular (b) = 0.88</li>
+                <li>Intercepto (a) = -88.0</li>
+                <li>Equação: Peso = -88.0 + 0.88 × Altura</li>
+                <li>R² = 0.97 (97% da variação é explicada pelo modelo)</li>
+              </ol>
+            </div>
+
+            <div className="bg-yellow-50 p-4 rounded-lg">
+              <h3 className="font-semibold mb-2">Interpretação:</h3>
+              <ul className="list-disc list-inside space-y-2">
+                <li>Para cada 1 cm de altura adicional, espera-se um aumento de 0.88 kg no peso</li>
+                <li>O R² de 0.97 indica um ajuste muito bom do modelo aos dados</li>
+                <li>O modelo pode ser usado para estimar o peso de uma pessoa conhecendo sua altura</li>
+              </ul>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
