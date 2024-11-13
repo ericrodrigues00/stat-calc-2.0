@@ -180,7 +180,7 @@ const Calculator = () => {
                                         <XAxis dataKey="x" name="X" />
                                         <YAxis dataKey="y" name="Y" />
                                         <Tooltip />
-                                        <Scatter name="Pontos" data={points} fill="#8884d8" />
+                                        <Scatter name="Pontos" data={[...points].sort((a, b) => a.x - b.x)} fill="#8884d8" />
                                     </ScatterChart>
                                 </ResponsiveContainer>
                             </div>
