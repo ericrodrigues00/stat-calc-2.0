@@ -28,10 +28,7 @@ const App = () => {
                 <footer className="bg-white border-t mt-auto">
                     <div className="container mx-auto px-4 py-6 text-center text-gray-600">
                         <p className="text-sm">
-                            Calculadora de Regressão Linear © {new Date().getFullYear()}
-                        </p>
-                        <p className="text-xs mt-2">
-                            Desenvolvido para fins educacionais
+                            Calculadora de Regressão Linear
                         </p>
                     </div>
                 </footer>
