@@ -24,7 +24,6 @@
 ## 🛠️ Tecnologias Utilizadas
 
 - [Vite](https://vitejs.dev/) — build tool moderna e rápida
-- [Vue 3](https://vuejs.org/) — framework progressivo para construção de UIs
 - [Tailwind CSS](https://tailwindcss.com/) — estilização utilitária e responsiva
 - [Chart.js](https://www.chartjs.org/) — geração dos gráficos de dispersão e regressão
 - [jsPDF](https://github.com/parallax/jsPDF) — geração de PDF no navegador
@@ -65,5 +64,5 @@ Sinta-se à vontade para usar, modificar e distribuir.
 
 
 
-Quer que eu gere o arquivo `README.md` pronto pra você colar no projeto?
-```
+
+
