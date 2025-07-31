@@ -35,6 +35,10 @@
 
 <img width="1387" height="908" alt="image" src="https://github.com/user-attachments/assets/0cd57f77-6523-40a5-90fd-2203898d5d61" />
 
+<img width="515" height="2305" alt="image" src="https://github.com/user-attachments/assets/d765fca3-3bac-459b-8e0c-6e7cf6451386" />
+
+<img width="515" height="852" alt="image" src="https://github.com/user-attachments/assets/2308d471-0880-4a23-8b94-a81b13540a10" />
+
 
 
 ## 📌 Possíveis Melhorias Futuras
