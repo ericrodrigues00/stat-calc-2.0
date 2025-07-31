@@ -1,8 +1,4 @@
-Perfeito! Com base nas imagens e nas informações que você passou, aqui está um modelo completo de `README.md` para o **Stat Calc 2.0 — Calculadora de Regressão Linear**:
 
----
-
-````markdown
 # 📈 Stat Calc 2.0 — Calculadora de Regressão Linear
 
 [![Deploy Vercel](https://img.shields.io/badge/Ver%20Online-Vercel-000?logo=vercel)](https://stat-calc-2-0.vercel.app)
